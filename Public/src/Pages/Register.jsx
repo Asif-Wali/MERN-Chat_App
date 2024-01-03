@@ -1,17 +1,68 @@
-import React from "react";
+import React,{useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Logo from "../Assets/Chatappimage.jpg";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import axios from "axios";
+
 
 function Register(){
-const HandleSubmit=(e)=>{
-        e.preventDefault();
-        alert("Form");
-    }
-
+    const [Values, setValues]= useState({
+        username: "",
+        email:"",
+        password: "",
+        confirmPassword: ""
+    });
 const HandleChange=(e)=>{
-    e.preventDefault();
-}    
+        setValues({...Values, [e.target.name]: e.target.value})
+        console.log(Values);
+}
+const ToastStyling ={
+    position:"bottom-right",
+            autoClose: 5000,
+            pauseOnHover: true,
+            draggable: true,
+            theme:"dark"
+
+};
+const HandleValidation=()=>{
+    const {username, email, password, confirmPassword}=Values;
+    if(password!=confirmPassword){
+        toast.error("Password and Confirm Password should be same.",ToastStyling);
+      return false;
+    }
+    else if(username.length < 3){
+        toast.error("Username should be greater than 3.", ToastStyling);
+        return false;
+    }
+    else if(password.length < 8){
+        toast.error("Password length should be greater than or Equal to 8.",ToastStyling)
+        return false;
+    }
+    else if(email===""){
+        toast.error("Email is required.", ToastStyling);
+        return false;
+    }
+    return true;
+}
+const HandleSubmit=async (e)=>{
+        e.preventDefault();
+       if(HandleValidation()){
+        const{username, email, password, confirmPassword}= Values;
+            const {data}= await axios.post(registerRoute, {
+                username,
+                email,
+                password
+            });
+       };
+        
+    }
+   
+ 
+    
+
+  
   return<>
   <FormContainer>
     <form onSubmit={(event)=>HandleSubmit(event)}>
@@ -48,6 +99,7 @@ const HandleChange=(e)=>{
     </form>
 
   </FormContainer>
+  <ToastContainer/>
   </>
   
 }
@@ -87,9 +139,11 @@ background-color:#131324;
            border-radius: 0.4 rem;
            width:100%;
            font-size:1.1rem;
+           color: white;
            &:focus{
             border:0.1rem solid #997af0;
             outline:none;
+            color:white;
            }
         }
         button{
@@ -114,14 +168,12 @@ background-color:#131324;
             color:white;
             text-transform:uppercase;
             a{
-                color:#A61C3C;
+                color:#04A777;
                 font-weight:bold;
                 text-decoration:none;
             }
         }
 
 
-    }
-
-}`
-export default Register;
+    }`
+export {Register, FormContainer };
