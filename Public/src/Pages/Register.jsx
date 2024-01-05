@@ -1,13 +1,15 @@
 import React,{useState, useEffect} from "react";
-import { Link } from "react-router-dom";
+import { Link , useNavigate} from "react-router-dom";
 import styled from "styled-components";
 import Logo from "../Assets/Chatappimage.jpg";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios";
+import { registerRoute } from "../Utilities/APIRoutes";
 
 
 function Register(){
+    const navigate=useNavigate()
     const [Values, setValues]= useState({
         username: "",
         email:"",
@@ -28,7 +30,7 @@ const ToastStyling ={
 };
 const HandleValidation=()=>{
     const {username, email, password, confirmPassword}=Values;
-    if(password!=confirmPassword){
+    if(password!==confirmPassword){
         toast.error("Password and Confirm Password should be same.",ToastStyling);
       return false;
     }
@@ -49,15 +51,22 @@ const HandleValidation=()=>{
 const HandleSubmit=async (e)=>{
         e.preventDefault();
        if(HandleValidation()){
-        const{username, email, password, confirmPassword}= Values;
+        const{username, email, password}= Values;
             const {data}= await axios.post(registerRoute, {
                 username,
                 email,
                 password
             });
+            if(data.status===false){
+                toast.error(data.msg, ToastStyling);
+            }
+            if(data.status===true){
+               localStorage.setItem("Chat-App_User", JSON.stringify(data.user))
+                navigate("/");
+            }
        };
         
-    }
+}
    
  
     
