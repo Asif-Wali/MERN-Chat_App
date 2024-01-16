@@ -37,6 +37,7 @@ const HandleValidation=()=>{
     }
     return true;
 }
+
 const HandleSubmit=async (e)=>{
         e.preventDefault();
        if(HandleValidation()){
@@ -49,7 +50,7 @@ const HandleSubmit=async (e)=>{
                 toast.error(data.msg, ToastStyling);
             }
             if(data.status===true){
-               localStorage.setItem("Chat-App_User", JSON.stringify(data.user))
+               localStorage.setItem("Chat-App_User", JSON.stringify(data.UserPostLogin));
                 navigate("/");
             }
        };
@@ -59,7 +60,7 @@ useEffect(()=>{
   if(localStorage.getItem("Chat-App_User")){
     navigate("/");
   }
-},[]);
+});
    
  
     

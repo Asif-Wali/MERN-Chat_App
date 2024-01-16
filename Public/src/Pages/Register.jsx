@@ -18,7 +18,6 @@ function Register(){
     });
 const HandleChange=(e)=>{
         setValues({...Values, [e.target.name]: e.target.value})
-        console.log(Values);
 }
 const ToastStyling ={
     position:"bottom-right",
@@ -61,17 +60,12 @@ const HandleSubmit=async (e)=>{
                 toast.error(data.msg, ToastStyling);
             }
             if(data.status===true){
-               localStorage.setItem("Chat-App_User", JSON.stringify(data.user))
+               localStorage.setItem("Chat-App_User", JSON.stringify(data.returnedUserDetail))
                 navigate("/");
             }
        };
         
 }
-   
- 
-    
-
-  
   return<>
   <FormContainer>
     <form onSubmit={(event)=>HandleSubmit(event)}>
@@ -185,4 +179,4 @@ background-color:#131324;
 
 
     }`
-export {Register, FormContainer };
+export {Register};
