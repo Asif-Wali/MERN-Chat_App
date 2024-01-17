@@ -2,7 +2,7 @@ import react ,{useState, useEffect} from "react";
 import styled from "styled-components";
 import Logo from "../Assets/Chatappimage.jpg";
 
-const Contact=({contacts, currentUser})=>{
+const Contact=({contacts, currentUser, changeChat})=>{
     const [currentUserName, setCurrentUserName]= useState(undefined);
     const [currentUserImage, setCurrentUserImage]= useState(undefined);
     const [currentSelected, setCurrentSelected]= useState(undefined);
@@ -12,7 +12,10 @@ const Contact=({contacts, currentUser})=>{
             setCurrentUserName(currentUser.username)
         }
     },[currentUser]);
-const ChangeCurrentChat=()=>{
+const ChangeCurrentChat=(index, contact)=>{
+    setCurrentSelected(index);
+    changeChat(contact);
+
 
 }
 
@@ -26,7 +29,8 @@ const ChangeCurrentChat=()=>{
             <div className="contacts">
                 {
                   contacts.map((contact, index)=>{
-                    return <div className={`contact ${index===currentSelected? "selected": ""}`} key={index}>
+                    return <div className={`contact ${index===currentSelected? "selected": ""}`} key={index }
+                     onClick={()=>ChangeCurrentChat(index,contact)}>
                         <div className="avatar">
                         <img src={`data:image/svg+xml;base64,${contact.avatarImage}`} alt="Avatar" />
                         </div>
@@ -67,7 +71,6 @@ background-color: #080420;
     }
     h3{
         color: white;
-        text-transform: uppercase;
     }
 }
 .contacts{

@@ -4,12 +4,16 @@ import { allUsersRoutes} from "../Utilities/APIRoutes";
 import { Contact } from "../Components/Contact";
 import styled from "styled-components";
 import axios from "axios";
+import { Welcome } from "../Components/Welcome";
+import { ChatContainer } from "../Components/ChatContainer";
 
 
 const Chat=()=>{
   const Navigate= useNavigate();
   const [contacts, setContacts]= useState([]);
   const [currentUser, setCurrentUser]= useState(undefined);
+  const [currentChat, setCurrentChat]=useState(undefined);
+  const [userLoaded, setUserLoaded]= useState(false);
   useEffect(()=>{
     const checkUser= async ()=>{
       if(!localStorage.getItem("Chat-App_User")){
@@ -17,6 +21,7 @@ const Chat=()=>{
       }else{
         const localStorageuser=await JSON.parse(localStorage.getItem("Chat-App_User"))
         setCurrentUser(localStorageuser);
+        setUserLoaded(true);
       }
     }
     checkUser();
@@ -38,11 +43,19 @@ const Chat=()=>{
   ctUser();
 
   },[currentUser]);
+
+  const HandleChatChange=(chat)=>{
+    setCurrentChat(chat);
+  }
 return<Container>
         <div className="container">
-          <Contact contacts={contacts} currentUser={currentUser}></Contact>
+          <Contact contacts={contacts} currentUser={currentUser} changeChat={HandleChatChange}></Contact>
+          {(userLoaded && currentChat===undefined) ? (<Welcome currentUser={currentUser}/>) :
+        (<ChatContainer currentChat={currentChat} />)}
         </div>
+        
       </Container>
+      
 }
 const  Container= styled.div`
 height: 100vh;
