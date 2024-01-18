@@ -15,11 +15,8 @@ const Contact=({contacts, currentUser, changeChat})=>{
 const ChangeCurrentChat=(index, contact)=>{
     setCurrentSelected(index);
     changeChat(contact);
-
-
 }
-
-    return<>{
+return<>{
         currentUserName && currentUserImage && (
         <Container>
             <div className="brandname">
