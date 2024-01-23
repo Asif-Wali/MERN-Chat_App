@@ -55,10 +55,10 @@ padding-bottom: 0.3rem;
             color: #ffff00c8;
             cursor:pointer;
         }
-    }
-        .emoji-picker-react {
+
+        .EmojiPickerReact {
             position: absolute;
-            top: -350px;
+            top: -470px;
             background-color: #080420;
             box-shadow: 0 5px 10px #9a86f3;
             border-color: #9186f3;
@@ -82,8 +82,7 @@ padding-bottom: 0.3rem;
                 background-color: #080420;
             }
         }
-    
-    
+    }
 }
 .input-container{
     width:100%;
