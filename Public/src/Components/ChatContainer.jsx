@@ -15,7 +15,7 @@ const ChatContainer=({currentChat, currentUser, socket})=>{
 useEffect(()=>{
    
 
-    if(currentChat, currentUser && currentUser._id){
+    if(currentChat && currentUser && currentUser._id){
         async function getMessagesfromDatabase(){
             const response=await axios.post(getAllMessagesRoute,{
                 from: currentUser._id,
