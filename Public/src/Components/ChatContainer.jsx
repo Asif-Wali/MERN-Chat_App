@@ -23,7 +23,7 @@ useEffect(()=>{
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   
-},[currentChat, ])
+},[currentChat])
 
 const HandleSendMsg= async(msg)=>{
     await axios.post(sendMessageRoute,{

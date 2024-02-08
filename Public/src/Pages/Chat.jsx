@@ -30,15 +30,14 @@ const Chat=()=>{
     checkUser();
     // eslint-disable-next-line react-hooks/exhaustive-deps
    
-  },[]);
-
+  },[Navigate]);
   useEffect(()=>{
     if (currentUser){
       socket.current=io(host);
       socket.current.emit("add-user", currentUser._id)
     }
 
-  },[currentUser])
+  },[currentUser]);
   useEffect(()=>{
 
   const ctUser=async ()=>{
@@ -53,9 +52,9 @@ const Chat=()=>{
     }
   }
   ctUser();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  
 
-  },[currentUser]);
+  },[currentUser, Navigate]);
 
   const HandleChatChange=(chat)=>{
     setCurrentChat(chat);
