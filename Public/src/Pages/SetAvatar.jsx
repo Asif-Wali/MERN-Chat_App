@@ -30,6 +30,7 @@ const SetAvatar=()=>{
     else if(user.isAvatarImageSet){
         navigate("/")
     }  
+    // eslint-disable-next-line react-hooks/exhaustive-deps
    },[])
  useEffect(()=>{
    async function getAvatar(){
@@ -43,6 +44,7 @@ const SetAvatar=()=>{
     setIsLoading(false);
    }
    getAvatar();
+   
 
    }
 ,[]);

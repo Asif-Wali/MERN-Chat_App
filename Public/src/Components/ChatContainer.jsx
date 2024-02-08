@@ -17,9 +17,11 @@ const ChatContainer=({currentChat,currentUser, socket})=>{
         setMessages(response.data);
     };
 useEffect(()=>{
+
     if(currentChat){
         getMessagesfromDatabase();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   
 },[currentChat])
 
@@ -47,6 +49,7 @@ useEffect(()=>{
             setArrivalMessage({fromSelf:false, message: msg})
         })
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
 },[]);
 
 useEffect(()=>{

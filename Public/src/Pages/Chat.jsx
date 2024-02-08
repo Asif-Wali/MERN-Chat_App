@@ -28,6 +28,7 @@ const Chat=()=>{
       }
     }
     checkUser();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
    
   },[]);
 
@@ -52,6 +53,7 @@ const Chat=()=>{
     }
   }
   ctUser();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
 
   },[currentUser]);
 
