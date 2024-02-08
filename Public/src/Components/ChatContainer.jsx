@@ -15,7 +15,7 @@ const ChatContainer=({currentChat, currentUser, socket})=>{
 useEffect(()=>{
    
 
-    if(currentChat && currentUser._id){
+    if(currentChat, currentUser && currentUser._id){
         async function getMessagesfromDatabase(){
             const response=await axios.post(getAllMessagesRoute,{
                 from: currentUser._id,
@@ -28,7 +28,7 @@ useEffect(()=>{
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   
-},[currentChat])
+},[currentChat,currentUser])
 
 const HandleSendMsg= async(msg)=>{
     await axios.post(sendMessageRoute,{
