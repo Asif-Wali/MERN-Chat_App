@@ -9,6 +9,9 @@ const ChatContainer=({currentChat,currentUser, socket})=>{
     const [arrivalMessage, setArrivalMessage]=useState(null);
     const [Messages, setMessages]=useState([]);
     const scrollRef= useRef();
+
+
+
 useEffect(()=>{
     async function getMessagesfromDatabase(){
         const response=await axios.post(getAllMessagesRoute,{
@@ -23,7 +26,7 @@ useEffect(()=>{
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   
-},[currentChat])
+},[currentChat,currentUser._id])
 
 const HandleSendMsg= async(msg)=>{
     await axios.post(sendMessageRoute,{
