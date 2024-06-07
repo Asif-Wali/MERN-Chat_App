@@ -6,3 +6,6 @@ export const setAvatarRoute= `${host}/api/auth/setAvatar`;
 export const allUsersRoute=`${host}/api/auth/allUsers`;
 export const sendMessageRoute=`${host}/api/messages/addmsg`;
 export const getAllMessagesRoute=`${host}/api/messages/getmsgs`;
+
+
+// This is the Change
