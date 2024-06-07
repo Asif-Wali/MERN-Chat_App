@@ -71,7 +71,7 @@ useEffect(()=>{
     <form onSubmit={(event)=>HandleSubmit(event)}>
     <div className="brand">
         <img src={Logo} alt="Logo" />
-        <h1>ChatApp</h1>
+        <h1>Let's Gossip</h1>
     </div>
     <input type="text"
      placeholder="Username" 

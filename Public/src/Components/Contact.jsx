@@ -21,7 +21,7 @@ return<>{
         <Container>
             <div className="brandname">
                 <img src={Logo} alt="Logo" />
-                <h3>ChatApp</h3>
+                <h3>Let's Gossip</h3>
             </div>
             <div className="contacts">
                 {
