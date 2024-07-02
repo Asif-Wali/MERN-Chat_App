@@ -3,7 +3,10 @@ Our Chat App is a cutting-edge communication platform built with modern technolo
 
 Key Features:
 
-**Real-Time Messaging**: Stay connected with your friends and colleagues through instant updates using WebSockets.
+**Real-Time Messaging**: Stay connected with your friends and colleagues through instant updates using WebSockets. 
+
 **Reliable Data Storage**: MongoDB Atlas ensures your messages and data are securely stored and easily accessible.
+
 **User-Friendly Interface**: Enjoy a sleek and intuitive design that makes chatting effortless and enjoyable.
+
 **Scalable Architecture**: Built to handle growing user bases and increasing amounts of data without compromising performance.
