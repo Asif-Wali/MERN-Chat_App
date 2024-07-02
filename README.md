@@ -1,5 +1,5 @@
 # Let's Gossip
-Our Chat App is a cutting-edge communication platform built with modern technologies to ensure seamless, real-time interaction. Developed using React for a dynamic and responsive user interface, and powered by Node.js and Express on the backend, this app guarantees smooth and efficient performance.
+This Chat App is a cutting-edge communication platform built with modern technologies to ensure seamless, real-time interaction. Developed using React for a dynamic and responsive user interface, and powered by Node.js and Express on the backend, this app guarantees smooth and efficient performance.
 
 Key Features:
 
